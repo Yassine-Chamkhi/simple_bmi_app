@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
 }
 
 class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
+  int currentSliderValue = 60;
   int height = 110;
   int weight = 60;
   CalculatorBrain ourBrain = CalculatorBrain();
@@ -103,7 +104,7 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
                                   child: Slider(
                                     activeColor: kMainColor,
                                     inactiveColor: Colors.grey[400],
-                                    value: 60,
+                                    value: currentSliderValue.toDouble(),
                                     min:5,
                                     max:120,
                                     divisions: 115,
@@ -111,6 +112,7 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
                                     onChanged: (value){
                                       setState(() {
                                         weight = value.round();
+                                        currentSliderValue=weight;
                                       });
                                     },
                                   ),
